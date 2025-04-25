@@ -31,11 +31,15 @@
 
                     {% else %}
 
-                    <a href="#" class="link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                      <a href="#" class="link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
                         {% if g.user is none%}
                         <img src="{{ url_for('static', filename = 'img/user-light.png') }}" alt="mdo" width="32" height="32" class="rounded-circle">
                         {% else %}
-                        <img src="{{ url_for('static', filename = g.user.photo) }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                                {% if g.user.photo is none%}
+                                    <img src="{{ url_for('static', filename = 'img/user-light.png') }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                                {% else %}
+                                    <img src="{{ url_for('static', filename = g.user.photo) }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                                {% endif %}
                         {% endif %}
                     </a>
                     <ul class="dropdown-menu text-small">
